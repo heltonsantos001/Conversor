@@ -68,7 +68,8 @@
                     ctx.drawImage(img, 0, 0);
 
                   
-                    const webpDataURL = canvas.toDataURL('image/webp', 0.8);
+                    const webpDataURL = canvas.toDataURL('image/webp', 1.0);
+
                     convertedImage.src = webpDataURL;
                     status.textContent = 'Conversão concluída!';
 
