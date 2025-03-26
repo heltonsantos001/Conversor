@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Imagem para WebP</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        input, button, a {
+            margin: 10px 0;
+            display: inline-block;
+            padding: 10px 20px;
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        a {
+            background-color: #008CBA;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Conversor de Imagem para WebP</h1>
+    <input type="file" id="fileInput" accept="image/*" />
+    <button id="convertButton">Converter para WebP</button>
+
+    <p id="status"></p>
+
+    <canvas id="canvas" style="display: none;"></canvas>
+
+    <h3>Imagem Convertida:</h3>
+    <img id="convertedImage" alt="Imagem convertida aparecerá aqui" />
+    <br />
+    <a id="downloadButton" href="#" download="imagem-convertida.webp" style="display: none;">Baixar Imagem Convertida</a>
+
+    <script>
+        document.getElementById('convertButton').addEventListener('click', () => {
+            const fileInput = document.getElementById('fileInput');
+            const canvas = document.getElementById('canvas');
+            const status = document.getElementById('status');
+            const convertedImage = document.getElementById('convertedImage');
+            const downloadButton = document.getElementById('downloadButton');
+
+            if (fileInput.files.length === 0) {
+                status.textContent = 'Por favor, selecione uma imagem!';
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const img = new Image();
+                img.src = e.target.result;
+
+                img.onload = function () {
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+
+                  
+                    const webpDataURL = canvas.toDataURL('image/webp', 0.8);
+                    convertedImage.src = webpDataURL;
+                    status.textContent = 'Conversão concluída!';
+
+                  
+                    downloadButton.href = webpDataURL;
+                    downloadButton.style.display = 'inline-block';
+                };
+            };
+
+            reader.readAsDataURL(file);
+        });
+    </script>
+
+</body>
+</html>
