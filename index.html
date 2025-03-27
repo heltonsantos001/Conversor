@@ -3,85 +3,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Conversor de Imagem para WebP</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 20px;
-        }
-        input, button, a {
-            margin: 10px 0;
-            display: inline-block;
-            padding: 10px 20px;
-            text-decoration: none;
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        a {
-            background-color: #008CBA;
-        }
-    </style>
+    <title>Conversor de Imagem</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <h1>Conversor de Imagem para WebP RC</h1>
-    <input type="file" id="fileInput" accept="image/*" />
-    <button id="convertButton">Converter para WebP</button>
+    <header>
+        <h1>Conversor de Imagem</h1>
+        <p>Converta suas imagens para diferentes formatos com facilidade.</p>
+    </header>
 
-    <p id="status"></p>
+    <div class="container">
+        <h2>Selecione e Converta sua Imagem</h2>
 
-    <canvas id="canvas" style="display: none;"></canvas>
+        <!-- Botão estilizado para o input de arquivo -->
+        <label class="file-input-container">
+            Adicionar Arquivo
+            <input type="file" id="fileInput" accept="image/*" />
+        </label>
 
-    <h3>Imagem Convertida:</h3>
-    <img id="convertedImage" alt="Imagem convertida aparecerá aqui" />
-    <br />
-    <a id="downloadButton" href="#" download="imagem-convertida.webp" style="display: none;">Baixar Imagem Convertida</a>
+        <select id="outputFormat">
+            <option value="webp">WebP</option>
+            <option value="jpeg">JPEG</option>
+            <option value="png">PNG</option>
+        </select>
 
-    <script>
-        document.getElementById('convertButton').addEventListener('click', () => {
-            const fileInput = document.getElementById('fileInput');
-            const canvas = document.getElementById('canvas');
-            const status = document.getElementById('status');
-            const convertedImage = document.getElementById('convertedImage');
-            const downloadButton = document.getElementById('downloadButton');
+        <button id="convertButton">Converter Imagem</button>
 
-            if (fileInput.files.length === 0) {
-                status.textContent = 'Por favor, selecione uma imagem!';
-                return;
-            }
+        <p id="status"></p>
 
-            const file = fileInput.files[0];
-            const reader = new FileReader();
+        <h3>Imagem Convertida:</h3>
+        <div id="imageIcon">🖼️</div>
+        <br />
+        <a id="downloadButton" href="#" download="imagem-convertida.webp" style="display: none;">Baixar Imagem Convertida</a>
+        <img id="convertedImage" alt="Imagem convertida aparecerá aqui" style="display: none;" />
+    </div>
 
-            reader.onload = function (e) {
-                const img = new Image();
-                img.src = e.target.result;
+    <footer>
+        <p>Criado por Helton Santos</p>
+    </footer>
 
-                img.onload = function () {
-                    canvas.width = img.width;
-                    canvas.height = img.height;
-                    const ctx = canvas.getContext('2d');
-                    ctx.drawImage(img, 0, 0);
-
-                  
-                    const webpDataURL = canvas.toDataURL('image/webp', 1.0);
-
-                    convertedImage.src = webpDataURL;
-                    status.textContent = 'Conversão concluída!';
-
-                  
-                    downloadButton.href = webpDataURL;
-                    downloadButton.style.display = 'inline-block';
-                };
-            };
-
-            reader.readAsDataURL(file);
-        });
-    </script>
-
+    <script src="script.js"></script>  <!-- Importa o JavaScript -->
 </body>
 </html>
+
+                    
