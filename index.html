@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de imagem</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="header-icon">
+          
+            <img src="./img/imagem.png" alt="Ícone" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <h1>Conversão de Imagens Rápida e Eficiente</h1>
+    </header>
+    <main>
+        <div>
+       
+             <label for="fileInput" class="custom-file-upload">
+                 Selecione uma imagem
+             </label>
+             <input type="file" id="fileInput" accept="image/*" multiple>
+        </div>
+        <p id="status"></p>
+        
+ 
+        <div id="convertedImages">
+            <div class="image-container">
+                <img src="./img/img2.jpg" alt="Imagem de exemplo para conversão">
+                <select id="outputFormatInput">
+                    <option value="webp">WEBP</option>
+                    <option value="png">PNG</option>
+                    <option value="jpeg">JPEG</option>
+                </select>
+                <button class="convert-btn">Converter</button>
+            </div>
+            <div class="image-container">
+                <img src="./img/img1.jpg" alt="Imagem de exemplo para conversão">
+                <select id="outputFormatInput">
+                    <option value="webp">WEBP</option>
+                    <option value="png">PNG</option>
+                    <option value="jpeg">JPEG</option>
+                </select>
+                <button class="convert-btn">Converter</button>
+            </div>
+            <div class="image-container">
+                <img src="./img/Borboleta.jpg" alt="Imagem de exemplo para conversão">
+                <select id="outputFormatInput">
+                    <option value="webp">WEBP</option>
+                    <option value="png">PNG</option>
+                    <option value="jpeg">JPEG</option>
+                </select>
+                <button class="convert-btn">Converter</button>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content">
+            <p class="creator">Criado por Helton Santos</p>
+            <div>
+                <p class="about">Este site foi desenvolvido para oferecer uma maneira rápida e eficiente de converter imagens para diversos formatos, como WebP, PNG e JPEG, com qualidade otimizada para a web.</p>
+            </div>
+            <p class="rights">© 2025 Helton Santos. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
